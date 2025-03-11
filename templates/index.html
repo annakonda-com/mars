@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if "инженер" in prof or "строитель" in prof %}
-<h2> Инженерные тренажеры </h2>
-<img src="../static/img/ing.png" alt="нет картинки">
-{% else %}
-<h2> Научные симуляторы </h2>
-<img src="../static/img/sci.png" alt="нет картинки">
-{% endif %}
+<h1>Моё предложение: {{planet}}</h1>
+<h2>Эта планета близка к Земле;</h2>
+<div>
+    <div class="alert alert-primary" role="alert">"На ней есть много необходимых ресурсов;"</div>
+    <div class="alert alert-secondary" role="alert">"На ней есть вода и атмосфера;"</div>
+    <div class="alert alert-success" role="alert">"На ней есть небольшое магнитное поле;"</div>
+    <div class="alert alert-danger" role="alert">"Наконец, она просто красива!"</div>
+</div>
 {% endblock %}
