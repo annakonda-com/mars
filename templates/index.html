@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Моё предложение: {{planet}}</h1>
-<h2>Эта планета близка к Земле;</h2>
+<h1>Результаты отбора</h1>
+<h2>Претендента на участие в миссии {{nickname}}</h2>
 <div>
-    <div class="alert alert-primary" role="alert">"На ней есть много необходимых ресурсов;"</div>
-    <div class="alert alert-secondary" role="alert">"На ней есть вода и атмосфера;"</div>
-    <div class="alert alert-success" role="alert">"На ней есть небольшое магнитное поле;"</div>
-    <div class="alert alert-danger" role="alert">"Наконец, она просто красива!"</div>
+    <div class="alert alert-success" role="alert">Поздравляем! Ваш рейтинг после {{level}} этапа отбора</div>
+    <h3>составляет {{rating}}!</h3>
+    <div class="alert alert-warning" role="alert">Желаем удачи!</div>
 </div>
 {% endblock %}
