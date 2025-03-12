@@ -1,11 +1,11 @@
-{% extends "base.html" %}
-
-{% block content %}
-<h1>Результаты отбора</h1>
-<h2>Претендента на участие в миссии {{nickname}}</h2>
-<div>
-    <div class="alert alert-success" role="alert">Поздравляем! Ваш рейтинг после {{level}} этапа отбора</div>
-    <h3>составляет {{rating}}!</h3>
-    <div class="alert alert-warning" role="alert">Желаем удачи!</div>
+{% extends "base.html" %} {% block content %}
+<div class="form-group">
+    <form method="post" enctype="multipart/form-data" >
+        <div>
+            <label for="photo">Выберите файл</label>
+            <input type="file" class="form-control-file" id="photo" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
 </div>
 {% endblock %}

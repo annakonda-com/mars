@@ -1,11 +1,14 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
 
-@app.route('/result/<nickname>/<int:level>/<float:rating>')
-def choice(nickname, level, rating):
-    return render_template("index.html", nickname=nickname, level=level, rating=rating)
+@app.route('/galery/', methods=['POST', 'GET'])
+def index1():
+    if request.method == 'POST':
+        f = request.files['file']
+        print(f.read())
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
