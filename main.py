@@ -1,5 +1,8 @@
 from flask import Flask, redirect, render_template, request
 import os
+import json
+
+from random import choice
 
 app = Flask(__name__)
 
@@ -24,6 +27,15 @@ def list_prof(type):
               'специалист по радиационной защите', 'астрогеолог', 'гляциолог', 'инженер жизнеобеспечения', 'метеоролог',
               'оператор марсохода', 'киберинжинер', 'штурман', 'пилот дронов']
     return render_template('list_prof.html', proffs=proffs, type=type)
+
+
+@app.route('/member')
+def member():
+    with open('static/members.json', mode='r', encoding='utf8') as f:
+        members = json.load(f)['members']
+    curr_member = choice(members)
+    return render_template('members.html', member=curr_member)
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
