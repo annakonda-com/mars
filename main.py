@@ -17,5 +17,13 @@ def index1():
     return render_template("index.html", images=images[1:])
 
 
+@app.route('/list_prof/<type>')
+def list_prof(type):
+    proffs = ['инженер-исследователь', 'пилот', 'строитель', 'экзобиолог', 'врач', 'инженер по терраформированию',
+              'климатолог',
+              'специалист по радиационной защите', 'астрогеолог', 'гляциолог', 'инженер жизнеобеспечения', 'метеоролог',
+              'оператор марсохода', 'киберинжинер', 'штурман', 'пилот дронов']
+    return render_template('list_prof.html', proffs=proffs, type=type)
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
