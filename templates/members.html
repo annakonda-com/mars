@@ -1,0 +1,5 @@
+{% extends "base.html" %} {% block content %}
+<h2>{{member.name}} {{member.surname}}</h2>"
+<img src={{member.img}}>
+<h3>{{member.spec | sort | join(', ')}}</h3>
+{% endblock %}
