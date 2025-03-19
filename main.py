@@ -49,6 +49,11 @@ def image_mars():
                 f.write(request.files['file'].read())
             return render_template('load_photo.html', image='astro_photo')
 
+@app.route('/carousel')
+def carousel():
+    images = os.listdir('./static/img')
+    return render_template("index.html", images=images[1:])
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
