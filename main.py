@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 import os
 import json
 
@@ -35,6 +35,19 @@ def member():
         members = json.load(f)['members']
     curr_member = choice(members)
     return render_template('members.html', member=curr_member)
+
+
+@app.route('/load_photo', methods=['POST', 'GET'])
+def image_mars():
+    if request.method == 'GET':
+        return render_template('load_photo.html', image=-1)
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return render_template('load_photo.html', image=-1)
+        else:
+            with open('static/img/astro_photo', mode='wb') as f:
+                f.write(request.files['file'].read())
+            return render_template('load_photo.html', image='astro_photo')
 
 
 if __name__ == '__main__':
