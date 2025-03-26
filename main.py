@@ -8,6 +8,7 @@ from data.jobs import Jobs
 
 from random import choice
 
+from forms.addjob import AddJobForm
 from forms.login import LoginForm
 from forms.register import RegisterForm
 
@@ -133,6 +134,30 @@ def reqister():
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
+
+@app.route('/addjob', methods=['GET', 'POST'])
+def addjob():
+    new_job = AddJobForm()
+    if new_job.validate_on_submit():
+        db_sess = db_session.create_session()
+        if not db_sess.query(User).filter(User.id == new_job.team_leader.data).all():
+            return render_template('addjob.html',
+                                   title='Добавление работы', form=new_job,
+                                   message="ID ответственного нет в БД")
+        jobs = Jobs(
+            job=new_job.job.data,
+            team_leader=new_job.team_leader.data,
+            work_size=new_job.work_size.data,
+            collaborators=new_job.collaborators.data,
+            is_finished=new_job.is_finished.data,
+            start_date=new_job.start_date.data,
+            end_date=new_job.end_date.data
+        )
+        db_sess.add(jobs)
+        db_sess.commit()
+        return redirect('/')
+    return render_template('addjob.html', title='Добавление работы', form=new_job)
+
 
 
 if __name__ == '__main__':
