@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, request, url_for, abort
 import os
 import json
-from flask_login import LoginManager, login_required, logout_user, login_user
+from flask_login import LoginManager, login_required, logout_user, login_user, current_user
 from data import db_session
 from data.users import User
 from data.jobs import Jobs
