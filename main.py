@@ -2,7 +2,8 @@ from flask import Flask, redirect, render_template, request, url_for, abort
 import os
 import json
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
-from data import db_session
+from data import db_session, users_resource
+from flask_restful import Api
 from data.users import User
 from data.jobs import Jobs
 
@@ -14,6 +15,9 @@ from forms.register import RegisterForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+api = Api(app)
+api.add_resource(users_resource.UsersListResource, '/api/v2/users')
+api.add_resource(users_resource.UsersResource, '/api/v2/users/<int:user_id>')
 db_session.global_init("db/mars_explorer.db")
 login_manager = LoginManager()
 login_manager.init_app(app)
