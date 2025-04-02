@@ -16,10 +16,10 @@ pprint(post('http://127.0.0.1:8080/api/v2/users', json={}).json())
 pprint(post('http://127.0.0.1:8080/api/v2/users', json={'name': 'Paul'}).json())
 # Не все поля
 
-pprint(post('http://127.0.0.1:8080/api/v2/users', json={'name': 'Paul', 'position': 'warrior',
-                                                        'surname': 'Atreides', 'age': 17, 'address': 'dune',
-                                                        'speciality': 'mystic',
-                                                        'hashed_password': 'paul', 'email': 'paul@mars.org'}).json())
+pprint(post('http://127.0.0.1:8080/api/v2/users', json={'name': 'Bibi', 'position': 'kid',
+                                                        'surname': 'Pin', 'age': 3, 'address': 'romashkovaya_dolyna',
+                                                        'speciality': 'beautiful_eyes',
+                                                        'hashed_password': 'daddy', 'email': 'bibi@mars.com'}).json())
 pprint(get('http://127.0.0.1:8080/api/v2/users/4').json())
 # Правильный запрос
 
