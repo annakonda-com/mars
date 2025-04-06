@@ -91,4 +91,3 @@ def edit_job(job_id):
         job_to_edit.end_date = request.json['end_date']
     db_sess.commit()
     return jsonify({'success': 'OK'})
-
